@@ -33,7 +33,7 @@ const UserPresenter = ({
       <Typography variant="h3">User management</Typography>
       <Card>
         <div className="flex justify-end">
-          <Link href="/user-management/add-user">
+          <Link href="/user-management/invite-user">
             <Button>
               <div>
                 <IoMdAdd />

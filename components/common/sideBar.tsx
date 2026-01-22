@@ -2,6 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import useResponsive from "@/hooks/useResponsive";
+import { useLogOutMutation } from "@/store/features/auth";
 import { toggleSideBar } from "@/store/slices/settings";
 import clsx from "clsx";
 import { signOut } from "next-auth/react";
@@ -24,6 +25,7 @@ export type Menu = {
 
 const SideBar = () => {
   const { showSidebar } = useAppSelector((state) => state.settings);
+  const [logout, { isLoading }] = useLogOutMutation();
   const dispatch = useAppDispatch();
   const route = usePathname();
   const isMd = useResponsive("down", "md");
@@ -50,6 +52,7 @@ const SideBar = () => {
 
   async function handleLogout() {
     try {
+      await logout(undefined);
       await signOut();
     } catch (error: any) {
       toast.error(error.message);
@@ -113,6 +116,7 @@ const SideBar = () => {
 
       <div className="absolute bottom-5 right-5 left-5">
         <Button
+          loading={isLoading}
           onClick={handleLogout}
           className="w-full justify-start gap-4 dark:text-white items-center bg-red-400 hover:bg-red-500"
         >
