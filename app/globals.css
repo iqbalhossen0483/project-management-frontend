@@ -7,7 +7,7 @@
 
   --primary-main: #1a8ea0;
   --primary-dark: #0e6572;
-  --primary-darker: #0e4d56;
+  --primary-darker: #09454e;
 
   --error: var(--color-red-500);
   --warning: var(--color-yellow-500);
@@ -17,8 +17,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--color-gray-950);
-    --card: var(--color-gray-900);
+    --background: var(--color-gray-800);
+    --card: var(--primary-darker);
   }
 }
 

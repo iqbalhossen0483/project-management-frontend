@@ -1,3 +1,4 @@
+import ClientLayout from "@/components/common/ClientLayout";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
@@ -22,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable}`}>{children}</body>
+      <body className={`${geistSans.variable}`}>
+        <ClientLayout>{children}</ClientLayout>
+      </body>
     </html>
   );
 }
