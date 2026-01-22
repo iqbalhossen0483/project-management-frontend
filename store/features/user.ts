@@ -21,7 +21,19 @@ const userSlice = api.injectEndpoints({
       query: ({ page }) => `/user/all?page=${page}&limit=${config.dataLimit}`,
       providesTags: ["all-user"],
     }),
+    updateUserStatus: builder.mutation({
+      query: ({ id, status }) => ({
+        url: `/user/${id}/status`,
+        method: "PATCH",
+        body: { status },
+      }),
+      invalidatesTags: ["all-user"],
+    }),
   }),
 });
 
-export const { useGetUserQuery, useGetAllUsersQuery } = userSlice;
+export const {
+  useGetUserQuery,
+  useGetAllUsersQuery,
+  useUpdateUserStatusMutation,
+} = userSlice;

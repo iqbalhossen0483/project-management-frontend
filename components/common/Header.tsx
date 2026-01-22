@@ -1,9 +1,9 @@
 "use client";
+import ThemedSwitch from "@/components/libs/ThemedSwitch";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { toggleSideBar, toggleTheme } from "@/store/slices/settings";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { IoMdMenu } from "react-icons/io";
-import Switch from "../libs/Switch";
 import Typography from "../libs/Typography";
 
 const Header = () => {
@@ -27,7 +27,7 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-2">
         <Typography variant="h6">{user?.name}</Typography>
-        <Switch enabled={theme === "dark"} onChange={handleToggleTheme} />
+        <ThemedSwitch enabled={theme === "dark"} onChange={handleToggleTheme} />
       </div>
     </div>
   );

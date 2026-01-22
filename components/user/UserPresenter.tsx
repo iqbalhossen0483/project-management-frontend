@@ -15,9 +15,16 @@ type Props = {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   onChangeStatus: (user: User) => void;
+  loadingStatus: string;
 };
 
-const UserPresenter = ({ users, page, setPage, onChangeStatus }: Props) => {
+const UserPresenter = ({
+  users,
+  page,
+  setPage,
+  onChangeStatus,
+  loadingStatus,
+}: Props) => {
   return (
     <div className="space-y-5">
       <Typography variant="h3">User management</Typography>
@@ -49,6 +56,7 @@ const UserPresenter = ({ users, page, setPage, onChangeStatus }: Props) => {
                   key={user._id}
                   user={user}
                   onChangeStatus={onChangeStatus}
+                  loadingStatus={loadingStatus}
                 />
               ))}
             </tbody>

@@ -1,13 +1,17 @@
-import React from "react";
-import { User, USER_STATUS } from "../../types/common";
+import { User } from "@/types/common";
 import Switch from "../libs/Switch";
 
 type Props = {
   user: User;
   onChangeStatus: (user: User) => void;
+  loadingStatus: string;
 };
 
-const SingleUserPresenter = ({ user, onChangeStatus }: Props) => {
+const SingleUserPresenter = ({
+  user,
+  onChangeStatus,
+  loadingStatus,
+}: Props) => {
   return (
     <tr>
       <td>{user.name}</td>
@@ -15,7 +19,8 @@ const SingleUserPresenter = ({ user, onChangeStatus }: Props) => {
       <td>{user.role}</td>
       <td>
         <Switch
-          enabled={user.status === USER_STATUS.ACTIVE}
+          loading={loadingStatus === user._id}
+          enabled={user.status === "ACTIVE"}
           onChange={() => onChangeStatus(user)}
         />
       </td>

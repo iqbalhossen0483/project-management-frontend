@@ -1,6 +1,6 @@
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
-const Switch = ({ enabled, onChange }) => {
+const ThemedSwitch = ({ enabled, onChange }) => {
   return (
     <button
       type="button"
@@ -24,4 +24,4 @@ const Switch = ({ enabled, onChange }) => {
   );
 };
 
-export default Switch;
+export default ThemedSwitch;
