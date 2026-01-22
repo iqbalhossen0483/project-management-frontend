@@ -2,6 +2,7 @@ import SignupForm from "@/components/auth/SignupForm";
 import Card from "@/components/libs/Card";
 import Typography from "@/components/libs/Typography";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function SignIn() {
   return (
@@ -29,7 +30,9 @@ export default function SignIn() {
 
         {/* Sign In Card */}
         <Card>
-          <SignupForm />
+          <Suspense fallback={<Typography>Loading...</Typography>}>
+            <SignupForm />
+          </Suspense>
         </Card>
 
         {/* Footer */}

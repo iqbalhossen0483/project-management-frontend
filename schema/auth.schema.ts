@@ -14,3 +14,14 @@ export const inviteSchema = yup.object().shape({
     .required("Role is required"),
 });
 export type IInviteSchema = yup.InferType<typeof inviteSchema>;
+
+export const registerSchema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  email: yup.string().required("Email is required"),
+  password: yup.string().required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .required("Confirm password is required")
+    .oneOf([yup.ref("password"), ""], "Passwords must match"),
+});
+export type IRegisterSchema = yup.InferType<typeof registerSchema>;
