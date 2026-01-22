@@ -4,13 +4,16 @@ import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import useResponsive from "@/hooks/useResponsive";
 import { toggleSideBar } from "@/store/slices/settings";
 import clsx from "clsx";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 import { FaRProject, FaUsers } from "react-icons/fa";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { ImHome } from "react-icons/im";
-import { IoMdMenu } from "react-icons/io";
+import { IoIosLogOut, IoMdMenu } from "react-icons/io";
+import { toast } from "react-toastify";
+import Button from "../libs/Button";
 import NavLink from "./NavLink";
 
 export type Menu = {
@@ -45,10 +48,18 @@ const SideBar = () => {
     }
   }, [dispatch, isMd]);
 
+  async function handleLogout() {
+    try {
+      await signOut();
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  }
+
   return (
     <aside
       className={clsx(
-        "bg-card h-screen px-3 py-2 overflow-hidden transition-all duration-300 ease-in-out",
+        "bg-card h-screen px-3 py-2 overflow-hidden transition-all duration-300 ease-in-out relative",
         // Desktop
         "md:relative md:translate-x-0",
         showSidebar ? "md:w-80" : "md:w-21.25",
@@ -98,6 +109,18 @@ const SideBar = () => {
             collapsed={!showSidebar}
           />
         ))}
+      </div>
+
+      <div className="absolute bottom-5 right-5 left-5">
+        <Button
+          onClick={handleLogout}
+          className="w-full justify-start gap-4 dark:text-white items-center bg-red-400 hover:bg-red-500"
+        >
+          <div>
+            <IoIosLogOut className="text-xl" />
+          </div>
+          Logout
+        </Button>
       </div>
     </aside>
   );
