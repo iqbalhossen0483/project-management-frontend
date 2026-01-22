@@ -1,4 +1,3 @@
-import ClientLayout from "@/components/common/ClientLayout";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -6,10 +5,10 @@ import React from "react";
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession();
 
-  if (!session) {
-    redirect("/auth/signin");
+  if (session) {
+    redirect("/");
   }
-  return <ClientLayout>{children}</ClientLayout>;
+  return children;
 };
 
 export default Layout;

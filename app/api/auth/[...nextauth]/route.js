@@ -42,11 +42,11 @@ const authOptions = {
   },
   secret: config.authSecret,
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.accessToken = user.data.accessToken;
-        token.refreshToken = user.data.refreshToken;
-        token.user = user.data.user;
+    async jwt({ token, user: response }) {
+      if (response) {
+        token.accessToken = response.accessToken;
+        token.refreshToken = response.refreshToken;
+        token.user = response.data;
       }
       return token;
     },
@@ -54,6 +54,7 @@ const authOptions = {
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
       session.user = token.user;
+
       return session;
     },
   },
