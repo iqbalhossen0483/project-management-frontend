@@ -29,6 +29,15 @@ const userSlice = api.injectEndpoints({
       }),
       invalidatesTags: ["all-user"],
     }),
+
+    updateUserRole: builder.mutation({
+      query: ({ id, role }) => ({
+        url: `/user/${id}/role`,
+        method: "PATCH",
+        body: { role },
+      }),
+      invalidatesTags: ["all-user"],
+    }),
   }),
 });
 
@@ -36,4 +45,5 @@ export const {
   useGetUserQuery,
   useGetAllUsersQuery,
   useUpdateUserStatusMutation,
+  useUpdateUserRoleMutation,
 } = userSlice;

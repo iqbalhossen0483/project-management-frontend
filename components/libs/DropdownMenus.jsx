@@ -1,3 +1,5 @@
+import useOutsideClick from "@/hooks/useOutsideClick";
+import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Button from "./Button";
 

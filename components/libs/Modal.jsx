@@ -3,7 +3,7 @@ import { IoClose } from "react-icons/io5";
 import IconButton from "./IconButton";
 import Typography from "./Typography";
 
-function Modal({ open, setOpen, title = "", children, className }) {
+function Modal({ open, setOpen, title = "", children, className = "" }) {
   if (!open) return null;
 
   const handleBackdropClick = (e) => {
@@ -24,12 +24,14 @@ function Modal({ open, setOpen, title = "", children, className }) {
           <Typography variant="h5">{title}</Typography>
           <IconButton
             onClick={() => setOpen(false)}
-            className="bg-transparent hover:bg-border!"
+            className="bg-transparent hover:bg-border! text-black! dark:text-white!"
           >
             <IoClose />
           </IconButton>
         </div>
-        <div className="dark:text-white p-3 md:p-6">{children}</div>
+        <div className="dark:text-white p-3 md:p-6 w-full min-w-lg">
+          {children}
+        </div>
       </div>
     </div>,
     document.body,
