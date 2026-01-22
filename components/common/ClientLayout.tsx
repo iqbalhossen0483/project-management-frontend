@@ -9,7 +9,7 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
       <SideBar />
       <div className="relative flex flex-col w-full">
         <Header />
-        <div className="grow container mx-auto px-3 md:px-5">{children}</div>
+        <div className="grow container mx-auto p-3 md:p-5">{children}</div>
         <Footer />
       </div>
     </div>

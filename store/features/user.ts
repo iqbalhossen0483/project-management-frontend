@@ -1,3 +1,4 @@
+import { config } from "@/config/config";
 import { api } from "../baseQuery";
 import { removeToken, setUser } from "../slices/user";
 
@@ -16,7 +17,11 @@ const userSlice = api.injectEndpoints({
         }
       },
     }),
+    getAllUsers: builder.query({
+      query: ({ page }) => `/user/all?page=${page}&limit=${config.dataLimit}`,
+      providesTags: ["all-user"],
+    }),
   }),
 });
 
-export const { useGetUserQuery } = userSlice;
+export const { useGetUserQuery, useGetAllUsersQuery } = userSlice;

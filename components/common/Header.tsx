@@ -24,7 +24,6 @@ const Header = () => {
         >
           {showSidebar ? <HiMenuAlt3 /> : <IoMdMenu />}
         </button>
-        <Typography variant="h5">Project Management</Typography>
       </div>
       <div className="flex items-center gap-2">
         <Typography variant="h6">{user?.name}</Typography>
