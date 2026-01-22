@@ -1,3 +1,4 @@
+import { User } from "@/types/common";
 import { createSlice } from "@reduxjs/toolkit";
 
 type UserStore = {
