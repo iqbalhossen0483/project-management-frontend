@@ -1,3 +1,4 @@
+import AuthGuard from "@/providers/AuthGaurd";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
 import ThemeProvider from "@/providers/ThemeProvider";
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body className={`${geistSans.variable}`}>
         <ReduxProvider>
           <NextAuthProvider>
-            <ThemeProvider>{children}</ThemeProvider>
+            <ThemeProvider>
+              <AuthGuard>{children}</AuthGuard>
+            </ThemeProvider>
           </NextAuthProvider>
         </ReduxProvider>
       </body>

@@ -9,6 +9,7 @@ import Typography from "../libs/Typography";
 const Header = () => {
   const dispatch = useAppDispatch();
   const { theme, showSidebar } = useAppSelector((state) => state.settings);
+  const { user } = useAppSelector((state) => state.user);
 
   function handleToggleTheme() {
     dispatch(toggleTheme());
@@ -26,7 +27,7 @@ const Header = () => {
         <Typography variant="h5">Project Management</Typography>
       </div>
       <div className="flex items-center gap-2">
-        <Typography variant="h6">Iqbal Hossen</Typography>
+        <Typography variant="h6">{user?.name}</Typography>
         <Switch enabled={theme === "dark"} onChange={handleToggleTheme} />
       </div>
     </div>
