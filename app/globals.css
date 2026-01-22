@@ -15,14 +15,7 @@
   --info: var(--color-blue-500);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-gray-800);
-    --card: var(--primary-darker);
-  }
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-card: var(--card);
   --color-border: var(--border);
@@ -37,3 +30,24 @@
   --color-success: var(--success);
   --color-info: var(--info);
 }
+
+@layer theme {
+  .dark {
+    --color-background: var(--color-gray-800);
+    --color-card: var(--primary-darker);
+
+    --color-border: var(--border);
+    --font-sans: var(--font-geist-sans);
+
+    --color-primary-main: var(--primary-main);
+    --color-primary-dark: var(--primary-dark);
+    --color-primary-darker: var(--primary-darker);
+
+    --color-error: var(--error);
+    --color-warning: var(--warning);
+    --color-success: var(--success);
+    --color-info: var(--info);
+  }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));

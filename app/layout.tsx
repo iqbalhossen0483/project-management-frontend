@@ -1,4 +1,6 @@
 import ClientLayout from "@/components/common/ClientLayout";
+import ReduxProvider from "@/providers/ReduxProvider";
+import ThemeProvider from "@/providers/ThemeProvider";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
@@ -24,7 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable}`}>
-        <ClientLayout>{children}</ClientLayout>
+        <ReduxProvider>
+          <ThemeProvider>
+            <ClientLayout>{children}</ClientLayout>
+          </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
