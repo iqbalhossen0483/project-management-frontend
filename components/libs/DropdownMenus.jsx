@@ -30,7 +30,7 @@ export default function DropdownMenus({
             ? "border-error! text-error!"
             : label !== placeholder
               ? "border-border! text-black! dark:text-white!"
-              : "border-border! text-gray-500! dark:text-gray-400!"
+              : "border-border! text-gray-500! dark:text-white!"
         }`}
         onClick={() => setShowList((p) => !p)}
         borderBottom={!showList}
@@ -52,7 +52,7 @@ export default function DropdownMenus({
                 setSelected(option.value);
                 setShowList(false);
               }}
-              className={`w-full p-2 text-left transition-all ${
+              className={`w-full p-2 text-left transition-all dark:text-white! ${
                 selected === option.value
                   ? "bg-gray-300 dark:bg-border/60"
                   : "hover:bg-gray-200 dark:hover:bg-border"
